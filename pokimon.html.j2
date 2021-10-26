@@ -1,0 +1,46 @@
+{% extends 'base.html.j2' %}
+
+{% block title %}
+Pokemon Results 
+{% endblock %}
+
+{% block content%}
+<h1> Pokemon Standing </h1>
+<form method="POST" action="/pokimon">
+  <div class="mb-3">
+    <label for="name" class="form-label">Pokemon Name</label>
+    <input type="text" name="name" class="form-control" id="name">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% if pokis %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Abilities</th>
+      <th scope="col">Base Experience</th>
+      <th scope="col">Sprite</th>
+      <th scope="col">Hp</th>
+      <th scope="col">Attack</th>
+      <th scope="col">Defense</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for poki in pokis %}
+      <tr>
+        <th scope="row">{{poki.Name}}</th>
+        <td>{{poki.abilities}}</td>
+        <td>{{poki.base_experience}}</td>
+        <td>{{poki.sprite}}</td>
+        <td>{{poki.hp}}</td>
+        <td>{{poki.attack}}</td>
+        <td>{{poki.defense}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  {% else %}
+{% endif %}
+{% endblock %}
